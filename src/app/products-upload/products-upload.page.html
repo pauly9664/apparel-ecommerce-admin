@@ -1,0 +1,39 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>products-upload</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content> -->
+  <form [formGroup]="productsForm" (ngSubmit)="uploadnow()" enctype="multipart/form-data">
+    <ion-list lines="none">
+    <ion-item >
+    <label position="floating">Description</label>
+    <input type="text" formControlName="description"/>
+  </ion-item>
+  <ion-item >
+    <label position="floating">Category</label>  
+    <input type="text" formControlName="category"/>
+  </ion-item >
+  <ion-item >
+    <label position="floating">Price</label>
+    <input type="number" formControlName="price"/>
+  </ion-item >
+  <ion-item>
+    <label position="floating">Count</label>
+    <input type="number" formControlName="count"/>
+  </ion-item>
+  <ion-item >
+    <label position="floating">Upload Image...</label>
+    <input type="file" (change)="onFileSelected($event)" />
+  </ion-item>
+  <ion-item >
+    <ion-button fill="outline"  (click)="uploadnow()" type="button" style="color: #000"size="default">Upload now</ion-button>
+  </ion-item>
+</ion-list>
+  </form>
+   <!-- <form action="uploadnow()" enctype="multipart/form-data" method="POST">  
+    <input type="file" name="photo" />
+    <input type="submit" value="Upload Photo"/>
+    <ion-button fill="outline"  (click)="onReply()" type="button" style="color: white"size="default">Submit</ion-button>
+ </form> -->
+<!-- </ion-content> -->
