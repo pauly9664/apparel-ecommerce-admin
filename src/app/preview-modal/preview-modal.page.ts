@@ -10,6 +10,7 @@ export class PreviewModalPage implements OnInit {
   img: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private viewCtrl: ModalController) { 
     this.img = this.navParams.get('img');
+    console.log(this.img.description);
   }
   ngOnInit() {
   }

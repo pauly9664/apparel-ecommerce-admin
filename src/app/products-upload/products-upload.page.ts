@@ -18,6 +18,7 @@ export class ProductsUploadPage implements OnInit {
       category: ['', ],
       price: ['', ],
       count: ['', ],
+      amount: ['',],
     });
   }
   onFileSelected(event){
@@ -28,10 +29,12 @@ export class ProductsUploadPage implements OnInit {
     const productUpload = new FormData();
     productUpload.append('description', this.productsForm.get('description').value);
     productUpload.append('category', this.productsForm.get('category').value);
-    productUpload.append('price', this.productsForm.get('price').value)
-    productUpload.append('count', this.productsForm.get('count').value)
+    // productUpload.append('price', this.productsForm.get('price').value)
+    // productUpload.append('count', this.productsForm.get('count').value)
+    productUpload.append('amount', this.productsForm.get('amount').value)
     productUpload.append('image',this.selectedFile, this.selectedFile.name);
     //const imagesDetails = this.productsForm.value;
+    console.log("this is it", productUpload);
     return this.uploads.uploadProducts(productUpload).subscribe(res=>{
       console.log(res);
     });

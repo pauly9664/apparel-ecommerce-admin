@@ -4,8 +4,23 @@
   </ion-toolbar>
 </ion-header>
 <ion-content> -->
+  <ion-grid>
+    <ion-row>
+    <ion-col size-sm="12" size-md="12" size-lg="12" style="background: #fff; color: grey;width: 80%;">
+      <ion-col size-sm="2" tappable routerLink="/menu/home" style="color: #000;font-weight: bold;"></ion-col>
+      <ion-col size-sm="2" tappable routerLink="/menu/accountslanding"style="color: #000;font-weight: bold;">Account </ion-col>
+      <ion-col size-sm="2"tappable routerLink="/menu/main-shop" style="color: #000;font-weight: bold;">Shop </ion-col>
+      <ion-col size-sm="2" tappable routerLink="/menu/history" style="color: #000; font-weight: bold;">Orders </ion-col> 
+      <ion-col size-sm="2" tappable routerLink="/menu/contact" style="color: #000; font-weight: bold;">Contact Us </ion-col>
+      <!-- <ion-col size-sm="4"><ion-icon name="call"></ion-icon>Call us 0719000112</ion-col> -->
+    </ion-col>
+  </ion-row>
+    </ion-grid>
+    <div class="align-form">
+      <h1 text-center style="font-family: fantasy ;">Preeti Fashions<br></h1>
+      <h2 text-center style="font-size: 13pt">Product Catalogue</h2>
   <form [formGroup]="productsForm" (ngSubmit)="uploadnow()" enctype="multipart/form-data">
-    <ion-list lines="none">
+    <ion-list lines="none"> 
     <ion-item >
     <label position="floating">Description</label>
     <input type="text" formControlName="description"/>
@@ -22,8 +37,12 @@
     <label position="floating">Count</label>
     <input type="number" formControlName="count"/>
   </ion-item>
+  <ion-item>
+    <label position="floating">Amount</label>
+    <input type="number" formControlName="amount"/>
+  </ion-item>
   <ion-item >
-    <label position="floating">Upload Image...</label>
+    <label position="floating"></label>
     <input type="file" (change)="onFileSelected($event)" />
   </ion-item>
   <ion-item >
@@ -31,6 +50,8 @@
   </ion-item>
 </ion-list>
   </form>
+</div>
+
    <!-- <form action="uploadnow()" enctype="multipart/form-data" method="POST">  
     <input type="file" name="photo" />
     <input type="submit" value="Upload Photo"/>

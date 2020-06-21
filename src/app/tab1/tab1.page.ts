@@ -14,10 +14,12 @@ export class Tab1Page {
   images: any = [];
   constructor(public navCtrl: NavController, private imagesProvider: ProductsService, private router: Router, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
     this.reloadImages();
+    
   }
   reloadImages() {
     this.imagesProvider.getImages().subscribe(data => {
       this.images = data;
+      console.log(this.images);
     });
   }
  
@@ -32,7 +34,8 @@ export class Tab1Page {
       component: PreviewModalPage, 
         componentProps:{
           img: img,
-        }});
+        }
+      });
     modal.present();
   }
  

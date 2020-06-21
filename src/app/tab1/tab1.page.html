@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Products
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,17 +12,20 @@
   <ion-list>
     <ion-item-sliding *ngFor="let img of images">
  
-      <ion-item tappable (click)="openImage(img)">
+      <ion-item tappable (click)="openImage(img)" lines="none">
         <ion-thumbnail item-start>
           <img [src]="img.url">
         </ion-thumbnail>
-        <h2>{{ img.desc }}</h2>
+        <p class="styling"><span style="font-weight:bold">{{ img.description }}</span><br>
+        {{img.category}}<br>
+        <span style="color: lightgreen;">KES {{img.price}}</span></p>
+
         <button ion-button clear icon-only item-end> <ion-icon name="arrow-forward"></ion-icon></button>
       </ion-item>
  
       <ion-item-options slot="end">
         <button ion-button icon-only color="danger" (click)="deleteImage(img)">
-        <ion-icon name="trash"></ion-icon>
+        <ion-icon name="cancel"></ion-icon>
       </button>
       </ion-item-options>
  

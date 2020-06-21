@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+    Orders
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,24 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Orders Page</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-list>
+    <ion-card>
+      <ion-card-header style="font-weight: bold;color: #000"><ion-icon name="flame"></ion-icon> Order Date | Status | View </ion-card-header>
+      <ion-card-content>
+       
+   <ion-item lines="none" *ngFor="let account of parsedAccount " style="font-family: Open Sans;">
+     <p style="max-width: 4.2em;margin-right: 20%;"> {{account.buying_date | date }}</p>
+     <p style="font-family: Open Sans;"><span style="color: red"> Delivery ongoing</span></p>
+     <ion-button
+     fill="outline" slot="end" size="small" (click)="openOrder(order)">
+     <ion-icon name="eye" slot="start" ></ion-icon>VIEW
+   </ion-button>
+ </ion-item>
+ 
+ </ion-card-content>
+ </ion-card>
+  </ion-list>
 </ion-content>

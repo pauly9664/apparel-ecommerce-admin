@@ -5,11 +5,11 @@
     </ion-item>
     <img [src]="img.url" class="fullscreen-image transparent" (click)="close()">
     <ion-card>
-      <ion-card-content class="img-info" *ngIf="img.desc">
-        <div class="desc-text">"{{ img.desc }}"</div>
+      <ion-card-content class="img-info" *ngIf="img.description">
+        <div class="desc-text">{{ img.description }}</div>
         <p>
-          <ion-icon name="calendar" item-left *ngIf="img.created"></ion-icon>
-          {{ img.created | date: 'short' }}
+          <ion-icon name="calendar"  *ngIf="img.created_at"></ion-icon>
+          {{ img.created_at | date: 'short' }}
         </p>
       </ion-card-content>
     </ion-card>

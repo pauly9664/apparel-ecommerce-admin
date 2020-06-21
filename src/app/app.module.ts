@@ -15,15 +15,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FileTransfer,  FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { PreviewModalPageModule } from './preview-modal/preview-modal.module';
-import { UploadModalPageModule } from './upload-modal/upload-modal.module';
+import { OrderviewPageModule } from './orderview/orderview.module';
+// import { UploadModalPageModule } from './upload-modal/upload-modal.module';
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      return storage.get('access_token');
+    },
+    whitelistedDomains: ['192.168.137.1:500', '192.168.0.122:500','192.168.200.154:500','192.168.200.187:500', '192.168.200.135:5000','192.168.100.35:501','192.168.137.1:500', '192.168.0.118:500', '192.168.200.142:5000', '192.168.200.129:500', '192.168.100.35:5000','192.168.0.106:500', '192.168.8.118:500','192.168.200.140:500','192.168.100.11:500']
+  }
+}
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     HttpClientModule, 
-    UploadModalPageModule,
-    PreviewModalPageModule,
+    OrderviewPageModule,
+    // UploadModalPageModule,
+    // PreviewModalPageModule,
     IonicModule.forRoot(), 
     AppRoutingModule],
   providers: [
