@@ -1,12 +1,6 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Products
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content >
+  <h1 text center style="font-family: Open Sans;">Products List</h1>
   <h3 [hidden]="images.length !== 0" text-center>No Images found!</h3>
  
   <ion-list>
@@ -36,4 +30,4 @@
     <button ion-fab (click)="presentActionSheet()"><ion-icon name="camera"></ion-icon></button>
   </ion-fab>
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
- </ion-content> -->
+ </ion-content>

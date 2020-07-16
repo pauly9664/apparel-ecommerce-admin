@@ -5,6 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { PreviewModalPage } from '../preview-modal/preview-modal.page';
 import { UploadModalPage } from '../upload-modal/upload-modal.page';
 import { Router } from '@angular/router';
+import { AuthserviceService } from '../authservice.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page {
   images: any = [];
-  constructor(public navCtrl: NavController, private imagesProvider: ProductsService, private router: Router, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, private authService: AuthserviceService, private imagesProvider: ProductsService, private router: Router, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
     this.reloadImages();
     
   }
@@ -38,6 +39,9 @@ export class Tab1Page {
       });
     modal.present();
   }
+  logout() {
+    this.authService.logout();
+}
  
   async presentActionSheet() {
     let actionSheet =  await this.actionSheetCtrl.create({

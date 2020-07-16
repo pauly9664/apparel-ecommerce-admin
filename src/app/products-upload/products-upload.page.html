@@ -27,7 +27,8 @@
   </ion-item>
   <ion-item >
     <label position="floating">Category</label>  
-    <input type="text" formControlName="category"/>
+    <select (change)="getCategory($event)"><option *ngFor= "let category of productCategory">{{category}}</option></select>
+    <p>{{passedCategory}}</p>
   </ion-item >
   <ion-item >
     <label position="floating">Price</label>

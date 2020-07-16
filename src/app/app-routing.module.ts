@@ -21,6 +21,14 @@ const routes: Routes = [
   {
     path: 'orderview',
     loadChildren: () => import('./orderview/orderview.module').then( m => m.OrderviewPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   }
 ];
 @NgModule({

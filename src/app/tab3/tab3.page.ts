@@ -22,7 +22,7 @@ export class Tab3Page {
     this.orders.getSalesActivities().subscribe(res => {
       
       this.parsedAccount = res;
-      console.log(this.parsedAccount);
+      console.log('yeeees',this.parsedAccount);
     })
   }
   async openOrder(order) {

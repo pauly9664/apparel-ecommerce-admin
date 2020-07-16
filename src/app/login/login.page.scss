@@ -1,0 +1,55 @@
+
+    .curved {
+        width: 100%;
+        height: 6.25em;
+        -moz-border-radius: 3.125em;
+        -webkit-border-radius: 3.125em;
+        border-radius: 0.625em;
+        margin-bottom: 0.625em;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+    .style-input{
+        max-width: 50%;
+      }
+    .bg-image {
+        /* The image used */
+        background-image: url("/assets/sample1.jpg");
+      
+        /* Add the blur effect */
+        filter: blur(8px);
+        -webkit-filter: blur(8px);
+      
+        /* Full height */
+        height: 100%;
+      
+        /* Center and scale the image nicely */
+        //background-position: center;
+        background-repeat: repeat;
+        background-size: cover;
+    }
+    .bg-text {
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(255,255,255,255); /* Black w/opacity/see-through */
+        color: white;
+        font-weight: bold;
+        border: 3px solid #f1f1f1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+      }
+    .styleInput {
+        // width: 100%; 
+        margin-left:auto; 
+        margin-right: auto; 
+    }
+    .loading-spinner{
+        --spinner-color: gold;
+    }
+    

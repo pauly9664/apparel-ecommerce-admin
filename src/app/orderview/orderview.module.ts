@@ -7,13 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { OrderviewPageRoutingModule } from './orderview-routing.module';
 
 import { OrderviewPage } from './orderview.page';
-
+import { RouterModule, Routes } from '@angular/router';
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: OrderviewPage
+//   }
+// ];
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OrderviewPageRoutingModule
+    OrderviewPageRoutingModule,
+    // RouterModule.forChild(routes)
   ],
   declarations: [OrderviewPage]
 })

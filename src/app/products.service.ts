@@ -3,11 +3,15 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { environment } from 'src/environments/environment';
+import { AlertController } from '@ionic/angular';
 export interface Order{
   _id: string;
   delivery_status: string,
   payment_status: string,
-  user_id:string
+  user_id:string,
+  buying_date: Date,
+  amount: string
   //  getImages();
 }
 
@@ -15,14 +19,15 @@ export interface Order{
   providedIn: 'root'
 })
 export class ProductsService {
-  apiURL = 'http://192.168.100.35:501/api';
-  constructor(public http: HttpClient, private transfer: FileTransfer) {
+  // apiURL = 'http://192.168.0.122:501/api';
+  apiURL = environment.url + '/api';
+  constructor(public http: HttpClient, private transfer: FileTransfer, private alertController: AlertController) {
    }
   getImages() {
     return this.http.get(this.apiURL + '/images');
   }
   getSalesActivities():Observable<Order>{
-    return this.http.get<Order>(`${this.apiURL}/getOrders`).pipe(map((response:Order)=>response));
+    return this.http.get<Order>(this.apiURL + '/getOrders').pipe(map((response:Order)=>response));
   }
  
   deleteImage(img) {
@@ -32,7 +37,18 @@ export class ProductsService {
     return this.http.get(`${this.apiURL}/sendtexts`);
   }
   uploadProducts(products){
-    return this.http.post(`${this.apiURL}/images`, products)
+    return this.http.post(`${this.apiURL}/images`, products,{
+      reportProgress: true,
+      observe: 'events'
+    })
+  }
+  showAlert(msg) {
+    let alert = this.alertController.create({
+      message: msg,
+      header: 'Network Error, Please try again after a few minutes',
+      buttons: ['OK']
+    });
+    alert.then(alert => alert.present());
   }
   uploadImage(img, desc) {
  

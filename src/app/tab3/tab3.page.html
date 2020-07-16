@@ -19,7 +19,7 @@
        
    <ion-item lines="none" *ngFor="let account of parsedAccount " style="font-family: Open Sans;">
      <p style="max-width: 4.2em;margin-right: 20%;"> {{account.buying_date | date }}</p>
-     <p style="font-family: Open Sans;"><span style="color: red"> Delivery ongoing</span></p>
+     <p style="font-family: Open Sans;"><span style="color: green"> Order COnfirmed</span></p>
      <ion-button
      fill="outline" slot="end" size="small" (click)="openOrder(order)">
      <ion-icon name="eye" slot="start" ></ion-icon>VIEW

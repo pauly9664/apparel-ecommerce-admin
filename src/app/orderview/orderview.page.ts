@@ -10,7 +10,7 @@ export class OrderviewPage implements OnInit {
   order:any;
 
   constructor(private navParams: NavParams, private popoverController: ModalController) {
-    // this.order = this.navParams.get('order');
+    this.order = this.navParams.get('order');
    }
 
   ngOnInit() {

@@ -1,0 +1,33 @@
+<ion-header>
+  <!-- <ion-toolbar color="dark">
+    <ion-title text-center style="font-weight: bold;">Login</ion-title>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content >
+  <div class="bg-image"></div>
+  <div class="bg-text">
+  <div class = "styleInput">
+  <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
+    <img src="/assets/preetiLogo1.png" style="height:100px; width: 100px" />
+    <ion-item class = "curved" lines="none">
+      <ion-label position="fixed" style="font-weight: bold; font-family: Open Sans;">Email</ion-label>
+      <input class="style-input" type="email" formControlName="email" />
+    </ion-item>
+
+    <ion-item class = "curved" lines="none">
+      <ion-label position="fixed" style="font-weight: bold; font-family:Open Sans">Password</ion-label>
+      <input class="style-input" type="password" formControlName="password"/>
+    </ion-item>
+
+    <div class="loading-spinner">
+      <ion-button size="small" type="submit" color="danger"  (click)="presentLoadingWithOptions()" [disabled]="!credentialsForm.valid" style="color: #fff">Login</ion-button>
+    
+    <!-- <ion-button expand="full" type="button"  (click)="presentLoadingWithOptions()" fill="outline" style="color: #000">Register</ion-button> -->
+  </div>
+  </form>
+</div>
+<p style="color: #000; font-size: smaller; font-family: Open Sans" tappable>Forgot Password?<br></p>
+<p style="color: blue;font-size: small; font-family: Open Sans" tappable routerLink="/menu/register">REGISTER a new account now</p>
+</div>
+</ion-content>
