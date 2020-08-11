@@ -1,16 +1,28 @@
 
 <ion-content>
-  <ion-card>
+  <ion-card style="margin-top: 10%;">
     <ion-card-header>
-      Order Details
+      <span style="font-weight: bold;">Order Details</span> for order {{order}}
     </ion-card-header>
     <ion-card-content>
 
-      <p>Payment Option -> {{order.payment_status}}</p><br> 
+      <!-- <p>Payment Option -> {{order.payment_status}}</p><br> 
       <p>Delivery Option ->  {{order.delivery_status}}</p><br>
       <p>Order Date -> {{order.buying_date | date}}</p>
-      <p></p><br>
+      <p></p><br> -->
+      <ion-button fill="outline" style="margin-left: 50%;" (click)="getDetails()" >View Details</ion-button>
+      <div *ngIf="orderDetail;">  
+    
+        <!-- <ng-template #orderDetail> -->
+      <p><span class="detailsStyle">Amount</span> -> KES {{amount}}</p><br>    
+      <p><span class="detailsStyle">Payment Option</span> -> {{payment}}</p><br> 
+      <p><span class="detailsStyle">Delivery Option</span> ->  {{delivery}}</p><br>
+      <p><span class="detailsStyle">Order Date</span> -> {{dday}}</p>
+    <!-- </ng-template> -->
+  </div>
+
     </ion-card-content>
+    
   </ion-card>
 
 </ion-content>

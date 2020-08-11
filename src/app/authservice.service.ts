@@ -74,4 +74,5 @@ export class AuthserviceService {
     });
     alert.then(alert => alert.present());
   }
+  getOrder
 }

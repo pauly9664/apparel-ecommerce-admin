@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { environment } from 'src/environments/environment';
 import { AlertController } from '@ionic/angular';
@@ -26,8 +26,21 @@ export class ProductsService {
   getImages() {
     return this.http.get(this.apiURL + '/images');
   }
-  getSalesActivities():Observable<Order>{
-    return this.http.get<Order>(this.apiURL + '/getOrders').pipe(map((response:Order)=>response));
+  getSalesActivities(){
+    return this.http.get(this.apiURL + '/getOrders');
+  }
+  getSalesActivity():Observable<any>{
+    return this.http.get<any>(this.apiURL + '/getOrders').pipe(map((response:any)=> response));
+  }
+  getOrder(){
+    return this.http.get(this.apiURL + '/getOrder/:id').pipe(
+      tap(res=>{
+        console.log("This is the specific order", res);
+      }),
+      // catchError(e => {
+
+      // })
+    )
   }
  
   deleteImage(img) {

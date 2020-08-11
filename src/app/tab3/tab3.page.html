@@ -16,15 +16,16 @@
     <ion-card>
       <ion-card-header style="font-weight: bold;color: #000"><ion-icon name="flame"></ion-icon> Order Date | Status | View </ion-card-header>
       <ion-card-content>
-       
-   <ion-item lines="none" *ngFor="let account of parsedAccount " style="font-family: Open Sans;">
+  <ion-item-sliding  *ngFor="let account of parsedAccount">
+   <ion-item lines="none" style="font-family: Open Sans;" >
      <p style="max-width: 4.2em;margin-right: 20%;"> {{account.buying_date | date }}</p>
-     <p style="font-family: Open Sans;"><span style="color: green"> Order COnfirmed</span></p>
+     <!-- <p style="font-family: Open Sans;"><span style="color: green"> Order COnfirmed</span></p> -->
+     <p style="font-family: Open Sans;" ><a href="{{account.url}}" target="_blank">{{account.url}}</a></p>
      <ion-button
-     fill="outline" slot="end" size="small" (click)="openOrder(order)">
-     <ion-icon name="eye" slot="start" ></ion-icon>VIEW
-   </ion-button>
+     fill="outline" slot="end" size="small" [routerLink]="['/orderview', account._id]">
+     <ion-icon name="eye" slot="start" ></ion-icon> VIEW</ion-button>
  </ion-item>
+</ion-item-sliding>
  
  </ion-card-content>
  </ion-card>

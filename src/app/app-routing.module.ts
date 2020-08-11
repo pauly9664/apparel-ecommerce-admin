@@ -19,7 +19,7 @@ const routes: Routes = [
     loadChildren: () => import('./products-upload/products-upload.module').then( m => m.ProductsUploadPageModule)
   },
   {
-    path: 'orderview',
+    path: 'orderview/:id',
     loadChildren: () => import('./orderview/orderview.module').then( m => m.OrderviewPageModule)
   },
   {

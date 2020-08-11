@@ -3,6 +3,7 @@ import { LoadingController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products.service';
 import { OrderviewPage } from '../orderview/orderview.page';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-tab3',
@@ -10,13 +11,22 @@ import { OrderviewPage } from '../orderview/orderview.page';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  order_form: FormGroup;
   data = null;
   loggedInUser = '';
   autoClose = false;
   accountsbyid = undefined;
-  parsedAccount:any;
-  constructor(private orders: ProductsService, private modalCtrl: ModalController, private activatedRoute: ActivatedRoute, public loadingController: LoadingController) {
+  parsedAccount:any = [];
+  order_ids:any;
+  constructor(private orders: ProductsService, private formBuilder: FormBuilder, private modalCtrl: ModalController, private activatedRoute: ActivatedRoute, public loadingController: LoadingController) {
    this.orderDetails();
+  
+  }
+  ngOnInit() {
+  
+    this.order_form = this.formBuilder.group({
+      order_id: [this.order_ids]
+    });
   }
   orderDetails(){
     this.orders.getSalesActivities().subscribe(res => {
@@ -26,7 +36,7 @@ export class Tab3Page {
     })
   }
   async openOrder(order) {
-    console.log("this is the order",order)
+  //   console.log("this is the order",order)
     let modal = await this.modalCtrl.create({
       
       component: OrderviewPage, 
@@ -35,6 +45,9 @@ export class Tab3Page {
         }
       });
     modal.present();
+  // console.log("This:", order)
+  
+  // console.log("We are the champions", this.order_ids)
   }
 
 }

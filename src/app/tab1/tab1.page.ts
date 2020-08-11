@@ -31,6 +31,7 @@ export class Tab1Page {
   }
  
   async openImage(img) {
+    console.log("This is the image", img);
     let modal = await this.modalCtrl.create({
       component: PreviewModalPage, 
         componentProps:{
