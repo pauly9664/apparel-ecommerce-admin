@@ -1,10 +1,10 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Tab 2
     </ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -12,29 +12,32 @@
       <ion-title size="large">Communications</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-grid >
-    <ion-row style="margin-left:25%;">
-      <ion-col class="cell-class" size-sm="6" size-md="6" size-lg="6" style="margin-top: 10%;">
-        <ion-icon style="font-size: 50px; color: green" name="chatbox-outline"></ion-icon>
-        <ion-label style="font-family: Open Sans; color:blueviolet">Send texts</ion-label>
+  <ion-grid style="background-color: blanchedalmond;">
+    <ion-row>
+      <img src="/assets/PreetiLogo.png" style="height:100px; width: 100px; margin-left: 40%" />
+    </ion-row>
+    <ion-row >
+      <ion-col class="cell-class" size-sm="6" size-md="6" size-lg="6" style="margin-top: 5%;">
+        <ion-icon style="font-size: 50px; color: green" tappable name="chatbox-outline"  routerLink="/tabs/tab1"></ion-icon>
+        <ion-label style="font-family: Open Sans; color:#000">Items List</ion-label>
       </ion-col>
-      <ion-col class="cell-class" size-sm="6" size-md="6" size-lg="6" style="margin-top: 10%;">
-        <ion-icon style="font-size: 50px;  color:green" name="paper-plane-outline"></ion-icon>
-        <ion-label style="font-family: Open Sans; color:blueviolet">User Feedback</ion-label>
+      <ion-col class="cell-class" size-sm="6" size-md="6" size-lg="6" style="margin-top: 5%;">
+        <ion-icon style="font-size: 50px;  color:green" tappable name="camera" routerLink="/products-upload"></ion-icon>
+        <ion-label style="font-family: Open Sans; color:#000">Products Upload</ion-label>
       </ion-col>
     </ion-row>
-    <ion-row style="margin-left:25%;">
+    <ion-row>
       <ion-col class="cell-class" size-sm="6" size-md="6" size-lg="6">
-        <ion-icon style="font-size: 50px; color: green" name="basket-outline"></ion-icon>
-        <ion-label style="font-family: Open Sans; color:blueviolet">Bookings Archive</ion-label>
+        <ion-icon style="font-size: 50px; color: green" tappable name="basket-outline"  routerLink="/products-upload"></ion-icon>
+        <ion-label style="font-family: Open Sans; color:#000">Bookings Archive</ion-label>
       </ion-col>
       <ion-col  class="cell-class" size-sm="6" size-md="6" size-lg="6">
-        <ion-icon style="font-size: 50px;  color:green" name="wallet-outline"></ion-icon>
-        <ion-label style="font-family: Open Sans; color:blueviolet">Orders</ion-label>
+        <ion-icon style="font-size: 50px;  color:green" tappable name="wallet-outline"  routerLink="/tabs/tab3"></ion-icon>
+        <ion-label style="font-family: Open Sans; color:#000">Orders List</ion-label>
       </ion-col>
     </ion-row>
     
   </ion-grid>
   
- <button routerLink="/products-upload">Send texts</button>
+ <button (click)="sendtexts()">Send texts</button>
 </ion-content>
