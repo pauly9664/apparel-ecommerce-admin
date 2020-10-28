@@ -16,7 +16,9 @@ export class OrderviewPage implements OnInit {
   payment = [];
   delivery = [];
   dday = [];
+  user = [];
   amount = [];
+  items:any = [];
 
   constructor( private popoverController: ModalController, private router: Router,private activatedRoute:ActivatedRoute, private orders: ProductsService) {
     // this.order = this.navParams.get('order');
@@ -56,6 +58,8 @@ export class OrderviewPage implements OnInit {
       this.delivery.push(order.delivery_status);
       this.amount.push(order.amount);
       this.dday.push(order.buying_date);
+      this.user.push(order.user_id);
+      this.items.push(order.description)
       // order.delivery_status = this.delivery;
       // order.buying_date = this.dday;
       // order.amount = this.amount;
@@ -63,6 +67,9 @@ export class OrderviewPage implements OnInit {
       console.log("Returned payment", this.payment)
     }))
    
+   }
+   getUserDetails(){
+     this.orders.postUser(this.user)
    }
 
   closePopover(){

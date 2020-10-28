@@ -2,7 +2,7 @@
 <ion-content>
   <ion-card style="margin-top: 10%;">
     <ion-card-header>
-      <span style="font-weight: bold;">Order Details</span> for order {{order}}
+      <span style="font-weight: bold;">Order Details </span>#{{order}}
     </ion-card-header>
     <ion-card-content>
 
@@ -14,6 +14,16 @@
       <div *ngIf="orderDetail;">  
     
         <!-- <ng-template #orderDetail> -->
+          <ion-input></ion-input>
+    
+      <p><span class="detailsStyle">Items Ordered</span></p><br>
+        <p *ngFor="let item of items">{{item}}</p><br>
+        <p><span class="detailsStyle">Customer</span> ->{{user}} <ion-button  size="small" fill="outline" (click)="getUser">USER DETAILS</ion-button></p> <br> 
+        <div *ngIf="userDetails">
+          <p><span class="detailsStyle">Name</span> -> {{name}}</p><br>    
+          <p><span class="detailsStyle">Cell</span> -> {{number}}</p><br>
+          <p><span class="detailsStyle">Email</span> -> {{email}}</p><br>        
+        </div>
       <p><span class="detailsStyle">Amount</span> -> KES {{amount}}</p><br>    
       <p><span class="detailsStyle">Payment Option</span> -> {{payment}}</p><br> 
       <p><span class="detailsStyle">Delivery Option</span> ->  {{delivery}}</p><br>
@@ -24,5 +34,6 @@
     </ion-card-content>
     
   </ion-card>
+  <ion-button color="danger" size="small" style="margin-right: auto; margin-left: auto; color: blanchedalmond;" routerLink="/tabs/tab3">BACK</ion-button>
 
 </ion-content>

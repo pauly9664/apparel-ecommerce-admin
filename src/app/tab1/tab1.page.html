@@ -4,11 +4,16 @@
   <div class="bg-image">
   <img src="/assets/PreetiLogo.png" style="height:100px; width: 100px; margin-left: 40%" />
   <h2 text center style="font-family: Open Sans; margin-left: 40%">Products List</h2>
+  <ion-button color="danger" (click)="logout()" routerLink="/login"><ion-icon slot="start" name="log-out"></ion-icon>Logout</ion-button>
 </div>
-  <h3 [hidden]="images.length !== 0" text-center>No Images found!</h3>
- 
+ <label style="color: skyblue;font-family: Open Sans; margin-left: 40%"> Search by name</label> 
+    <ion-searchbar style="max-width:50%; margin-left: 50%;" (ionChange)="FilterArrayObjects($event)" (ionClear)=" reloadImages()"></ion-searchbar>  
+      <button  (click)="presentActionSheet()"><ion-icon style="font-size: larger;"name="camera"></ion-icon></button>
+  <h3 [hidden]="images.length !== 0" text-center>No Items found!</h3>
+
+  
   <ion-list>
-    <ion-item-sliding *ngFor="let img of images">
+    <ion-item-sliding  *ngFor="let img of images">
  
       <ion-item tappable (click)="openImage(img)" lines="none">
         <ion-thumbnail item-start>
@@ -16,7 +21,7 @@
         </ion-thumbnail>
         <p class="styling"><span style="font-weight:bold">{{ img.description }}</span><br>
         {{img.category}}<br>
-        <span style="color: lightgreen;">KES {{img.price}}</span></p>
+        <span style="color: green;">KES {{img.price}}</span></p>
 
         <button ion-button clear icon-only item-end> <ion-icon name="arrow-forward"></ion-icon></button>
       </ion-item>
@@ -30,8 +35,6 @@
     </ion-item-sliding>
   </ion-list>
  
-  <ion-fab right bottom>
-    <button ion-fab (click)="presentActionSheet()"><ion-icon name="camera"></ion-icon></button>
-  </ion-fab>
+ 
   <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
  </ion-content>

@@ -9,7 +9,7 @@
   <div class="bg-text">
   <div class = "styleInput">
   <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
-    <img src="/assets/preetiLogo1.png" style="height:100px; width: 100px" />
+    <img src="/assets/PreetiLogo.png" style="height:100px; width: 100px" />
     <ion-item class = "curved" lines="none">
       <ion-label position="fixed" style="font-weight: bold; font-family: Open Sans;">Email</ion-label>
       <input class="style-input" type="email" formControlName="email" />
@@ -28,6 +28,6 @@
   </form>
 </div>
 <p style="color: #000; font-size: smaller; font-family: Open Sans" tappable>Forgot Password?<br></p>
-<p style="color: blue;font-size: small; font-family: Open Sans" tappable routerLink="/menu/register">REGISTER a new account now</p>
+<p style="color: blue;font-size: small; font-family: Open Sans" tappable routerLink="/register">REGISTER a new account now</p>
 </div>
 </ion-content>

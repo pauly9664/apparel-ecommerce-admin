@@ -6,6 +6,7 @@ import { PreviewModalPage } from '../preview-modal/preview-modal.page';
 import { UploadModalPage } from '../upload-modal/upload-modal.page';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
+import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -13,10 +14,25 @@ import { AuthserviceService } from '../authservice.service';
 })
 export class Tab1Page {
   images: any = [];
+  searchControl:FormControl;
+  prods: any;
+  searchResult: any;
   constructor(public navCtrl: NavController, private authService: AuthserviceService, private imagesProvider: ProductsService, private router: Router, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
     this.reloadImages();
     
   }
+  FilterArrayObjects(ev:any){
+    this.prods = ev.target.value;
+    console.log("event data",this.prods);
+    if(this.prods && this.prods.trim() != ''){
+      this.images = this.images.filter((item)=>{
+        // this.productCategory.push(item.category);
+        
+        return(item.description.toLowerCase().indexOf(this.prods.toLowerCase())>-1)
+      })
+    }
+  }
+
   reloadImages() {
     this.imagesProvider.getImages().subscribe(data => {
       this.images = data;

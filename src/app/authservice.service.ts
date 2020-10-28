@@ -31,7 +31,7 @@ export class AuthserviceService {
     });
     }
     login(credentials) {
-      return this.http.post(`${this.url}/api/login`, credentials).pipe(
+      return this.http.post(`${this.url}/api/loginInternal`, credentials).pipe(
         tap(res => {
           this.storage.set(TOKEN_KEY, res['token']);
           this.user = this.helper.decodeToken(res['token']);
@@ -47,6 +47,17 @@ export class AuthserviceService {
       this.storage.remove(TOKEN_KEY).then(() => {
         this.authenticationState.next(false);
       });
+    }
+    register(credentials) {
+      // if(credentials){
+      //   console.log(credentials);
+      // }
+      return this.http.post(`${this.url}/api/registerInternal`, credentials).pipe(
+        catchError(e => {
+          this.showAlert(e.error.msg);
+          throw new Error(e);
+        })
+      );
     }
   checkToken() {
     this.storage.get(TOKEN_KEY).then(token => {

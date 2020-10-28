@@ -49,6 +49,9 @@ export class ProductsService {
   sendtext(){
     return this.http.get(`${this.apiURL}/sendtexts`);
   }
+  postUser(user){
+    return this.http.post(this.apiURL + '/userdetails/', user);
+  }
   uploadProducts(products){
     return this.http.post(`${this.apiURL}/images`, products,{
       reportProgress: true,
