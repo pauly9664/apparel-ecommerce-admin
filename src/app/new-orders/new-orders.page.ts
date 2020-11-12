@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoadingController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../products.service';
@@ -6,11 +6,11 @@ import { OrderviewPage } from '../orderview/orderview.page';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss']
+  selector: 'app-new-orders',
+  templateUrl: './new-orders.page.html',
+  styleUrls: ['./new-orders.page.scss'],
 })
-export class Tab3Page {
+export class NewOrdersPage implements OnInit {
   order_form: FormGroup;
   data = null;
   loggedInUser = '';
@@ -22,12 +22,13 @@ export class Tab3Page {
   confirmView: FormGroup;
   viewership = 1;
   setval: any;
+  filteredParsedAccount:any = [];
+
   constructor(private orders: ProductsService, private formBuilder: FormBuilder, private modalCtrl: ModalController, private activatedRoute: ActivatedRoute, public loadingController: LoadingController) {
-   this.orderDetails();
-  
-  }
+    this.orderDetails();
+   }
+
   ngOnInit() {
-  
     this.order_form = this.formBuilder.group({
       order_id: [this.order_ids]
     });
@@ -46,6 +47,12 @@ export class Tab3Page {
     this.orders.getSalesActivities().subscribe(res => {
       
       this.parsedAccount = res;
+      this.filteredParsedAccount = this.parsedAccount.filter((order)=>{
+     
+          return(order.viewed_status === 0)
+      
+
+      })
      
       console.log('yeeees',this.parsedAccount);
     })
@@ -66,5 +73,7 @@ export class Tab3Page {
   
   // console.log("We are the champions", this.order_ids)
   }
+
+
 
 }

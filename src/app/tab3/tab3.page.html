@@ -22,7 +22,7 @@
      <!-- <p style="font-family: Open Sans;"><span style="color: green"> Order COnfirmed</span></p> -->
      <p style="font-family: Open Sans;" ><a href="{{account.url}}" target="_blank">{{account.url}}</a></p>
      <ion-button
-     fill="outline" slot="end" size="small" [routerLink]="['/orderview', account._id]">
+     fill="outline" slot="end" size="small" (click)="confirmviewed(account._id)"[routerLink]="['/orderview', account._id]">
      <ion-icon name="eye" slot="start" ></ion-icon> VIEW</ion-button>
  </ion-item>
 </ion-item-sliding>

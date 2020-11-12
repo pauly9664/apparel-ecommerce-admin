@@ -19,9 +19,13 @@ export interface Order{
   providedIn: 'root'
 })
 export class ProductsService {
+ 
   // apiURL = 'http://192.168.0.122:501/api';
   apiURL = environment.url + '/api';
   constructor(public http: HttpClient, private transfer: FileTransfer, private alertController: AlertController) {
+   }
+   getNewOrders(){
+     return this.http.get(this.apiURL + '/getNewOrders')
    }
   getImages() {
     return this.http.get(this.apiURL + '/images');
@@ -37,12 +41,11 @@ export class ProductsService {
       tap(res=>{
         console.log("This is the specific order", res);
       }),
-      // catchError(e => {
-
-      // })
     )
   }
- 
+  confirmViewerShip(confirm){
+    return this.http.patch(`${this.apiURL}/confirmView`, confirm);
+  }
   deleteImage(img) {
     return this.http.delete(this.apiURL + '/images/' + img._id);
   }

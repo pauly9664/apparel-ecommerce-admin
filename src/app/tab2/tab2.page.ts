@@ -7,9 +7,15 @@ import { ProductsService } from '../products.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  news:any = [];
 
-  constructor(private textProvider:ProductsService) {}
-  sendtexts(){
-    this.textProvider.sendtext().subscribe();
+  constructor(private textProvider:ProductsService) {
+    this.getOrdersCount()
+  }
+  getOrdersCount(){
+    this.textProvider.getNewOrders().subscribe(res =>{
+      this.news = res;
+      console.log("Count", this.news)
+    });
   }
 }
