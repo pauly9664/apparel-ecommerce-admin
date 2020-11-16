@@ -14,7 +14,8 @@
   </ion-header>
   <ion-grid>
     <ion-row>
-      <img src="/assets/PreetiLogo.png" style="height:100px; width: 100px; margin-left: 40%" />
+      <img src="/assets/PreetiLogo.png" style="height:140px; width: 140px; margin-left: 40%" />
+      <!-- <h2 text center style="font-family: Open Sans;">App Center</h2> -->
     </ion-row>
     <ion-row >
       <ion-col class="cell-class" size-sm="6" size-md="6" size-lg="6" style="margin-top: 5%;">
@@ -28,12 +29,12 @@
     </ion-row>
     <ion-row>
       <ion-col class="cell-class" size-sm="6" size-md="6" size-lg="6">
-        <ion-icon style="font-size: 50px; color: yellow" tappable name="basket-outline"  routerLink="/products-upload"></ion-icon>
-        <ion-label style="font-family: Open Sans; color:#000; font-weight: bold">Bookings Archive</ion-label>
+        <ion-icon style="font-size: 50px; color: yellow" tappable name="wallet-outline"  routerLink="/tabs/tab3"></ion-icon>
+        <ion-label style="font-family: Open Sans; color:#000; font-weight: bold">All Orders</ion-label>
       </ion-col>
       <ion-col  class="cell-class" size-sm="6" size-md="6" size-lg="6">
-        <ion-icon style="font-size: 50px;  color:green" tappable name="wallet-outline"  routerLink="/new-orders"></ion-icon>
-        <ion-label style="font-family: Open Sans; color:#000; font-weight: bold">New Orders <ion-badge color="success" >{{news}}</ion-badge></ion-label>
+        <ion-icon style="font-size: 50px;  color:green" tappable name="basket-outline"  routerLink="/new-orders"></ion-icon>
+        <ion-label  routerLink="/new-orders" style="font-family: Open Sans; color:#000; font-weight: bold">New Orders <ion-badge color="success" >{{news}}</ion-badge></ion-label>
       </ion-col>
     </ion-row>
     

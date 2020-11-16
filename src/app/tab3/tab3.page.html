@@ -19,10 +19,10 @@
   <ion-item-sliding  *ngFor="let account of parsedAccount">
    <ion-item lines="none" style="font-family: Open Sans;" >
      <p style="max-width: 4.2em;margin-right: 20%;"> {{account.buying_date | date }}</p>
-     <!-- <p style="font-family: Open Sans;"><span style="color: green"> Order COnfirmed</span></p> -->
-     <p style="font-family: Open Sans;" ><a href="{{account.url}}" target="_blank">{{account.url}}</a></p>
+     <p style="font-family: Open Sans;"><span style="color: green; font-weight: bold"><i> KES {{account.amount}}</i></span></p>
+     <!-- <p style="font-family: Open Sans;" ><a href="{{account.url}}" target="_blank">{{account.url}}</a></p> -->
      <ion-button
-     fill="outline" slot="end" size="small" (click)="confirmviewed(account._id)"[routerLink]="['/orderview', account._id]">
+     color="success" style="margin-right: 45%;"slot="end" size="small" (click)="confirmviewed(account._id)"[routerLink]="['/orderview', account._id]">
      <ion-icon name="eye" slot="start" ></ion-icon> VIEW</ion-button>
  </ion-item>
 </ion-item-sliding>

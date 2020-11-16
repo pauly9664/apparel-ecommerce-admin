@@ -1,8 +1,9 @@
 
 <ion-content>
-  <ion-card style="margin-top: 10%;">
+    <img src="/assets/PreetiLogo.png" style="height:140px; width: 140px; margin-left: 40%" />
+  <ion-card style="margin-top: 10%;background-image: url('/assets/wood.jpg') ;">
     <ion-card-header>
-      <span style="font-weight: bold;">Order Details </span>#{{order}}
+      <span style="font-weight: bold;color: #fff">Order Details #{{order}}</span>
     </ion-card-header>
     <ion-card-content>
 
@@ -10,24 +11,24 @@
       <p>Delivery Option ->  {{order.delivery_status}}</p><br>
       <p>Order Date -> {{order.buying_date | date}}</p>
       <p></p><br> -->
-      <ion-button fill="outline" style="margin-left: 50%;" (click)="getDetails()" >View Details</ion-button>
+      <ion-button color="success" style="margin-left: 50%;" (click)="getDetails()" >View Details</ion-button>
       <div *ngIf="orderDetail;">  
     
         <!-- <ng-template #orderDetail> -->
           <ion-input></ion-input>
     
       <p><span class="detailsStyle">Items Ordered</span></p><br>
-        <p *ngFor="let item of items">{{item}}</p><br>
-        <p><span class="detailsStyle">Customer</span> ->{{user}} <ion-button  size="small" fill="outline" (click)="getUser">USER DETAILS</ion-button></p> <br> 
+        <p *ngFor="let item of items" style="color:#fff">{{item}}</p><br>
+        <!-- <p><span class="detailsStyle">Customer</span> ->{{user}} <ion-button  size="small" fill="outline" (click)="getUser">USER DETAILS</ion-button></p> <br>  -->
         <div *ngIf="userDetails">
           <p><span class="detailsStyle">Name</span> -> {{name}}</p><br>    
           <p><span class="detailsStyle">Cell</span> -> {{number}}</p><br>
           <p><span class="detailsStyle">Email</span> -> {{email}}</p><br>        
         </div>
-      <p><span class="detailsStyle">Amount</span> -> KES {{amount}}</p><br>    
-      <p><span class="detailsStyle">Payment Option</span> -> {{payment}}</p><br> 
-      <p><span class="detailsStyle">Delivery Option</span> ->  {{delivery}}</p><br>
-      <p><span class="detailsStyle">Order Date</span> -> {{dday}}</p>
+      <p><span class="detailsStyle">Amount -> KES {{amount}}</span> </p><br>    
+      <p><span class="detailsStyle">Payment Option -> {{payment}}</span></p><br> 
+      <p><span class="detailsStyle">Delivery Option -> {{delivery}}</span></p><br>
+      <p><span class="detailsStyle">Order Date -> {{dday}}</span></p>
     <!-- </ng-template> -->
   </div>
 

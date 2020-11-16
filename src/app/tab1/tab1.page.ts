@@ -3,7 +3,7 @@ import { ProductsService } from '../products.service';
 import { NavController, ModalController, ActionSheetController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { PreviewModalPage } from '../preview-modal/preview-modal.page';
-import { UploadModalPage } from '../upload-modal/upload-modal.page';
+// import { UploadModalPage } from '../upload-modal/upload-modal.page';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
 import { FormControl } from '@angular/forms';
@@ -71,12 +71,12 @@ export class Tab1Page {
             //this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
           }
         },
-        {
-          text: 'Use Camera',
-          handler: () => {
-            this.takePicture(this.camera.PictureSourceType.CAMERA);
-          }
-        },
+        // {
+        //   text: 'Use Camera',
+        //   handler: () => {
+        //     this.takePicture(this.camera.PictureSourceType.CAMERA);
+        //   }
+        // },
         {
           text: 'Cancel',
           role: 'cancel'
@@ -86,32 +86,32 @@ export class Tab1Page {
 actionSheet.present();
   }
  
-  public takePicture(sourceType) {
-    // Create options for the Camera Dialog
-    var options = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: sourceType,
-      saveToPhotoAlbum: false,
-      correctOrientation: true
-    };
+  // public takePicture(sourceType) {
+  //   // Create options for the Camera Dialog
+  //   var options = {
+  //     quality: 100,
+  //     destinationType: this.camera.DestinationType.FILE_URI,
+  //     sourceType: sourceType,
+  //     saveToPhotoAlbum: false,
+  //     correctOrientation: true
+  //   };
  
-    // Get the data of an image
-     this.camera.getPicture(options).then((imagePath) => {
-      let modal =  this.modalCtrl.create({
-        component: UploadModalPage,
-        componentProps:{
-          data: imagePath
-        }
-       });
-      //modal.present();
-      // modal.onDidDismiss(data => {
-      //   if (data && data.reload) {
-      //     this.reloadImages();
-      //   }
-      // });
-    }, (err) => {
-      console.log('Error: ', err);
-    });
-  }
+  //   // Get the data of an image
+  //    this.camera.getPicture(options).then((imagePath) => {
+  //     let modal =  this.modalCtrl.create({
+  //       component: UploadModalPage,
+  //       componentProps:{
+  //         data: imagePath
+  //       }
+  //      });
+  //     //modal.present();
+  //     // modal.onDidDismiss(data => {
+  //     //   if (data && data.reload) {
+  //     //     this.reloadImages();
+  //     //   }
+  //     // });
+  //   }, (err) => {
+  //     console.log('Error: ', err);
+  //   });
+  // }
 }
