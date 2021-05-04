@@ -27,6 +27,7 @@ export class ProductsUploadPage implements OnInit {
       price: ['', ],
       count: ['', ],
       amount: ['',],
+      sizes: ['',]
     });
     this.setval = this.productsForm.get('category').setValue(this.passedCategory);
   }
@@ -57,6 +58,7 @@ export class ProductsUploadPage implements OnInit {
     productUpload.append('price', this.productsForm.get('price').value);
     // productUpload.append('count', this.productsForm.get('count').value)
     productUpload.append('amount', this.productsForm.get('amount').value)
+    productUpload.append('sizes', this.productsForm.get('sizes').value)
     productUpload.append('image',this.selectedFile, this.selectedFile.name);
     //const imagesDetails = this.productsForm.value;
     console.log("this is it", productUpload);

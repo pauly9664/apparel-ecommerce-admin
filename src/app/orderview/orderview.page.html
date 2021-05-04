@@ -18,6 +18,7 @@
           <ion-input></ion-input>
     
       <p><span class="detailsStyle">Items Ordered</span></p><br>
+      <p *ngFor="let img of url" style="color:#fff">{{img}}</p><br>
         <p *ngFor="let item of items" style="color:#fff">{{item}}</p><br>
         <!-- <p><span class="detailsStyle">Customer</span> ->{{user}} <ion-button  size="small" fill="outline" (click)="getUser">USER DETAILS</ion-button></p> <br>  -->
         <div *ngIf="userDetails">
@@ -26,6 +27,8 @@
           <p><span class="detailsStyle">Email</span> -> {{email}}</p><br>        
         </div>
       <p><span class="detailsStyle">Amount -> KES {{amount}}</span> </p><br>    
+      <p><span class="detailsStyle">Customer Name -> {{cust_name}}</span></p><br> 
+      <p><span class="detailsStyle">Customer Cell -> {{cust_cell}}</span></p><br> 
       <p><span class="detailsStyle">Payment Option -> {{payment}}</span></p><br> 
       <p><span class="detailsStyle">Delivery Option -> {{delivery}}</span></p><br>
       <p><span class="detailsStyle">Order Date -> {{dday}}</span></p>

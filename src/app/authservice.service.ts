@@ -31,7 +31,7 @@ export class AuthserviceService {
     });
     }
     login(credentials) {
-      return this.http.post(`${this.url}/api/loginInternal`, credentials).pipe(
+      return this.http.post('/api/loginInternal', credentials).pipe(
         tap(res => {
           this.storage.set(TOKEN_KEY, res['token']);
           this.user = this.helper.decodeToken(res['token']);
@@ -52,7 +52,7 @@ export class AuthserviceService {
       // if(credentials){
       //   console.log(credentials);
       // }
-      return this.http.post(`${this.url}/api/registerInternal`, credentials).pipe(
+      return this.http.post('/api/registerInternal', credentials).pipe(
         catchError(e => {
           this.showAlert(e.error.msg);
           throw new Error(e);
@@ -75,7 +75,7 @@ export class AuthserviceService {
     });
   }
   getCategories(): Observable<Categories>{
-    return this.http.get<Categories>(this.url + '/api/fetchCategories').pipe(map((response:Categories)=> response)) ;
+    return this.http.get<Categories>('/api/fetchCategories').pipe(map((response:Categories)=> response)) ;
    }
   showAlert(msg) {
     let alert = this.alertController.create({

@@ -25,19 +25,19 @@ export class ProductsService {
   constructor(public http: HttpClient, private transfer: FileTransfer, private alertController: AlertController) {
    }
    getNewOrders(){
-     return this.http.get(this.apiURL + '/getNewOrders')
+     return this.http.get('/api/getNewOrders')
    }
   getImages() {
-    return this.http.get(this.apiURL + '/images');
+    return this.http.get('/api/images');
   }
   getSalesActivities(){
-    return this.http.get(this.apiURL + '/getOrders');
+    return this.http.get('/api/getOrders');
   }
   getSalesActivity():Observable<any>{
-    return this.http.get<any>(this.apiURL + '/getOrders').pipe(map((response:any)=> response));
+    return this.http.get<any>('/api/getOrders').pipe(map((response:any)=> response));
   }
   getOrder(){
-    return this.http.get(this.apiURL + '/getOrder/:id').pipe(
+    return this.http.get('/api/getOrder/:id').pipe(
       tap(res=>{
         console.log("This is the specific order", res);
       }),
@@ -45,10 +45,10 @@ export class ProductsService {
     )
   }
   confirmViewerShip(confirm){
-    return this.http.patch(`${this.apiURL}/confirmView`, confirm);
+    return this.http.patch('/api/confirmView', confirm);
   }
   deleteImage(img) {
-    return this.http.delete(this.apiURL + '/images/' + img._id);
+    return this.http.delete('/api/images/' + img._id);
   }
   sendtext(){
     return this.http.get(`${this.apiURL}/sendtexts`);

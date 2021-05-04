@@ -18,7 +18,7 @@ export class Tab1Page {
   prods: any;
   searchResult: any;
   constructor(public navCtrl: NavController, private authService: AuthserviceService, private imagesProvider: ProductsService, private router: Router, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
-    this.reloadImages();
+    // this.reloadImages();
     
   }
   FilterArrayObjects(ev:any){
@@ -71,12 +71,12 @@ export class Tab1Page {
             //this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
           }
         },
-        // {
-        //   text: 'Use Camera',
-        //   handler: () => {
-        //     this.takePicture(this.camera.PictureSourceType.CAMERA);
-        //   }
-        // },
+        {
+          text: 'View Items',
+          handler: () => {
+            this.reloadImages();
+          }
+        },
         {
           text: 'Cancel',
           role: 'cancel'
