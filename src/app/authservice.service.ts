@@ -31,7 +31,7 @@ export class AuthserviceService {
     });
     }
     login(credentials) {
-      return this.http.post('/api/loginInternal', credentials).pipe(
+      return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/loginInternal', credentials).pipe(
         tap(res => {
           this.storage.set(TOKEN_KEY, res['token']);
           this.user = this.helper.decodeToken(res['token']);
@@ -75,7 +75,7 @@ export class AuthserviceService {
     });
   }
   getCategories(): Observable<Categories>{
-    return this.http.get<Categories>('/api/fetchCategories').pipe(map((response:Categories)=> response)) ;
+    return this.http.get<Categories>('https://preeti-fashions-ad.herokuapp.com/api/fetchCategories').pipe(map((response:Categories)=> response)) ;
    }
   showAlert(msg) {
     let alert = this.alertController.create({

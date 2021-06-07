@@ -25,19 +25,19 @@ export class ProductsService {
   constructor(public http: HttpClient, private transfer: FileTransfer, private alertController: AlertController) {
    }
    getNewOrders(){
-     return this.http.get('/api/getNewOrders')
+     return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getNewOrders')
    }
   getImages() {
-    return this.http.get('/api/images');
+    return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/images');
   }
   getSalesActivities(){
-    return this.http.get('/api/getOrders');
+    return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrders');
   }
   getSalesActivity():Observable<any>{
-    return this.http.get<any>('/api/getOrders').pipe(map((response:any)=> response));
+    return this.http.get<any>('https://preeti-fashions-ad.herokuapp.com/api/getOrders').pipe(map((response:any)=> response));
   }
   getOrder(){
-    return this.http.get('/api/getOrder/:id').pipe(
+    return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrder/:id').pipe(
       tap(res=>{
         console.log("This is the specific order", res);
       }),
@@ -48,7 +48,7 @@ export class ProductsService {
     return this.http.patch('/api/confirmView', confirm);
   }
   deleteImage(img) {
-    return this.http.delete('/api/images/' + img._id);
+    return this.http.delete('https://preeti-fashions-ad.herokuapp.com/api/images/' + img._id);
   }
   sendtext(){
     return this.http.get(`${this.apiURL}/sendtexts`);

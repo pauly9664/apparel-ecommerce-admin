@@ -22,6 +22,7 @@ export class OrderviewPage implements OnInit {
   cust_name = [];
   cust_cell = [];
   url= [];
+  url2: any;
 
   constructor( private popoverController: ModalController, private router: Router,private activatedRoute:ActivatedRoute, private orders: ProductsService) {
     // this.order = this.navParams.get('order');
@@ -65,14 +66,16 @@ export class OrderviewPage implements OnInit {
       this.items.push(order.description);
       this.cust_name.push(order.customer_name);
       this.cust_cell.push(order.customer_contact);
-      this.url.push(order.url)
+      // this.url2.push(order.urls)
       // order.delivery_status = this.delivery;
       // order.buying_date = this.dday;
       // order.amount = this.amount;
-
-      console.log("Returned desc", order.url)
+      var s = order.urls
+      var merge = s.split(',')
+      this.url = merge
+      let a = merge[0]
+      console.log("Returned array", merge)
     }))
-   
    }
    getUserDetails(){
      this.orders.postUser(this.user)
