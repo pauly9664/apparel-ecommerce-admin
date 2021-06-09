@@ -21,7 +21,7 @@ export interface Order{
 export class ProductsService {
  
   // apiURL = 'http://192.168.0.122:501/api';
-  apiURL = environment.url + '/api';
+  // apiURL = environment.url + '/api';
   constructor(public http: HttpClient, private transfer: FileTransfer, private alertController: AlertController) {
    }
    getNewOrders(){
@@ -50,14 +50,14 @@ export class ProductsService {
   deleteImage(img) {
     return this.http.delete('https://preeti-fashions-ad.herokuapp.com/api/images/' + img._id);
   }
-  sendtext(){
-    return this.http.get(`${this.apiURL}/sendtexts`);
-  }
+  // sendtext(){
+  //   return this.http.get(`${this.apiURL}/sendtexts`);
+  // }
   postUser(user){
-    return this.http.post(this.apiURL + '/userdetails/', user);
+    return this.http.post('/api/userdetails/', user);
   }
   uploadProducts(products){
-    return this.http.post(`${this.apiURL}/images`, products,{
+    return this.http.post('/api/images', products,{
       reportProgress: true,
       observe: 'events'
     })
@@ -73,7 +73,7 @@ export class ProductsService {
   uploadImage(img, desc) {
  
     // Destination URL
-    let url = this.apiURL + '/images';
+    let url =  '/api/images';
   
     // File for Upload
     var targetPath = img;

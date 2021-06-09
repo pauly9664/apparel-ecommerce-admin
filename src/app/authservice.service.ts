@@ -19,7 +19,7 @@ const TOKEN_KEY = 'access_token';
 export class AuthserviceService {
   authenticationState = new BehaviorSubject(false);
   user = null;
-  url = environment.url;
+  // url = environment.url;
   // helper:any;
 
   constructor(private alertController: AlertController,private http: HttpClient, private storage: Storage, private plt: Platform, 
@@ -52,7 +52,7 @@ export class AuthserviceService {
       // if(credentials){
       //   console.log(credentials);
       // }
-      return this.http.post('/api/registerInternal', credentials).pipe(
+      return this.http.post('https://preeti-fashions-ad.herokuapp.com/api/registerInternal', credentials).pipe(
         catchError(e => {
           this.showAlert(e.error.msg);
           throw new Error(e);
