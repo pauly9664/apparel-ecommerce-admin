@@ -11,7 +11,7 @@
       <p>Delivery Option ->  {{order.delivery_status}}</p><br>
       <p>Order Date -> {{order.buying_date | date}}</p>
       <p></p><br> -->
-      <ion-button color="success" style="margin-left: 50%;" (click)="getDetails()" >View Details</ion-button>
+      <ion-button color="success" style="margin-left: 50%;" fill="clear" (click)="getDetails()" >View Details</ion-button>
       <div *ngIf="orderDetail;">  
     
         <!-- <ng-template #orderDetail> -->
@@ -19,7 +19,7 @@
     
       <p><span class="detailsStyle">Items Ordered</span></p><br>
       <div *ngFor="let img of url" style="color:#fff">
-      <img style="max-width: 200px;"  [src]='img'>
+      <img style="max-width: 200px;"  [src]='url'>
       </div><br>
         <p *ngFor="let item of items" style="color:#fff">{{item}}</p><br>
         <!-- <p><span class="detailsStyle">Customer</span> ->{{user}} <ion-button  size="small" fill="outline" (click)="getUser">USER DETAILS</ion-button></p> <br>  -->
@@ -40,6 +40,9 @@
     </ion-card-content>
     
   </ion-card>
-  <ion-button color="danger" size="small" style="margin-right: auto; margin-left: auto; color: blanchedalmond;" routerLink="/tabs/tab3">BACK</ion-button>
+  <ion-item style="margin-right: auto; margin-left: auto;">
+      <ion-button color="danger" size="small" style="margin-right: auto; margin-left: auto; color: blanchedalmond;" fill="clear" routerLink="/tabs/tab3">BACK</ion-button>
+  </ion-item>
+ 
 
 </ion-content>

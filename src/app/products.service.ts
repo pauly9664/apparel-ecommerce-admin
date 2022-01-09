@@ -21,31 +21,46 @@ export interface Order{
 export class ProductsService {
  
   // apiURL = 'http://192.168.0.122:501/api';
-  // apiURL = environment.url + '/api';
+  apiURL = environment.url;
   constructor(public http: HttpClient, private transfer: FileTransfer, private alertController: AlertController) {
    }
    getNewOrders(){
-     return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getNewOrders')
+     return this.http.get( this.apiURL + '/api/getNewOrders')
    }
   getImages() {
-    return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/images');
+    return this.http.get(this.apiURL + '/api/images');
   }
   getSalesActivities(){
-    return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrders');
+    return this.http.get(this.apiURL + '/api/getOrders');
   }
   getSalesActivity():Observable<any>{
-    return this.http.get<any>('https://preeti-fashions-ad.herokuapp.com/api/getOrders').pipe(map((response:any)=> response));
+    return this.http.get<any>(this.apiURL + '/api/getOrders').pipe(map((response:any)=> response));
+  }
+  getSalesCount(){
+    return this.http.get(this.apiURL + '/api/getTodaysSales')
+  }
+  updateStocks(counter){
+    return this.http.patch(this.apiURL + '/api/updateStockCount', counter)
   }
   getOrder(){
-    return this.http.get('https://preeti-fashions-ad.herokuapp.com/api/getOrder/:id').pipe(
+    return this.http.get(this.apiURL + '/api/getOrder/:id').pipe(
       tap(res=>{
         console.log("This is the specific order", res);
       }),
    
     )
   }
+  postSaleOff(sales){
+    return this.http.post(this.apiURL + '/api/postSaleOff', sales)
+  }
+  fetchItems(){
+    return this.http.get(this.apiURL + '/api/fetchitems')
+  }
+  fetchSales(){
+    return this.http.get(this.apiURL + '/api/fetchSales')
+  }
   confirmViewerShip(confirm){
-    return this.http.patch('/api/confirmView', confirm);
+    return this.http.patch(this.apiURL + '/api/confirmView', confirm);
   }
   deleteImage(img) {
     return this.http.delete('https://preeti-fashions-ad.herokuapp.com/api/images/' + img._id);
@@ -57,7 +72,7 @@ export class ProductsService {
     return this.http.post('/api/userdetails/', user);
   }
   uploadProducts(products){
-    return this.http.post('/api/images', products,{
+    return this.http.post(this.apiURL + '/api/images', products,{
       reportProgress: true,
       observe: 'events'
     })

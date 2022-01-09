@@ -2,12 +2,15 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    background-color: blanchedalmond;
+    background-color: lightgreen;
    // padding-top: 5%;
 }
 label{
     width: 100px;
     display: inline-block;
     color:#000;
+    font-weight: bold;
+}
+ion-label{
     font-weight: bold;
 }

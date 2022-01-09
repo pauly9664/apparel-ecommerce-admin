@@ -7,6 +7,8 @@ import { PreviewModalPage } from '../preview-modal/preview-modal.page';
 import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
 import { FormControl } from '@angular/forms';
+import { element } from 'protractor';
+import { ViewSalePage } from '../view-sale/view-sale.page';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -16,10 +18,31 @@ export class Tab1Page {
   images: any = [];
   searchControl:FormControl;
   prods: any;
+  el:any
+  salesCount: any
+  products = []
   searchResult: any;
+  product: Object
+  sliderConfig = {
+    spaceBetween: 5,
+    centeredSlides: true,
+    slidesPerView: 2
+
+  }
   constructor(public navCtrl: NavController, private authService: AuthserviceService, private imagesProvider: ProductsService, private router: Router, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
     // this.reloadImages();
+    // this.fetchSale();
+    this.getSalesC();
+    this.imagesProvider.fetchSales().subscribe(sales=>{
     
+      this.product = sales
+      // this.products.push(this.product)
+      // this.products.forEach(element => {
+      // this.el = element.item_list.split(',')
+      // });
+      console.log("Sales 2", this.product)
+    })
+    // console.log("Sales ",this.product);
   }
   FilterArrayObjects(ev:any){
     this.prods = ev.target.value;
@@ -32,7 +55,11 @@ export class Tab1Page {
       })
     }
   }
-
+getSalesC(){
+  this.imagesProvider.getSalesCount().subscribe(element=>[
+    this.salesCount = element
+  ])
+  }
   reloadImages() {
     this.imagesProvider.getImages().subscribe(data => {
       this.images = data;
@@ -65,16 +92,24 @@ export class Tab1Page {
       // title: 'Select Image Source',
       buttons: [
         {
+          text: 'Load Items',
+          handler: () => {
+            this.reloadImages();
+          }
+        },
+        {
           text: 'Upload new items',
           handler: () => {
             this.router.navigate(["/products-upload"]);
             //this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
           }
         },
+       
         {
-          text: 'View Items',
+          text: 'Logout',
           handler: () => {
-            this.reloadImages();
+            this.logout();
+            this.router.navigate(["/login"])
           }
         },
         {
@@ -84,6 +119,17 @@ export class Tab1Page {
       ],
     });
 actionSheet.present();
+  }
+  async openImager(img) {
+    console.log(img)
+    let modal = await this.modalCtrl.create({
+      
+      component: ViewSalePage, 
+        componentProps:{
+          img: img,
+        }
+      });
+    modal.present();
   }
  
   // public takePicture(sourceType) {

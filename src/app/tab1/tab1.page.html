@@ -3,19 +3,83 @@
 
   <div class="bg-image">
   <img src="/assets/PreetiLogo.png" style="height:140px; width: 140px; margin-left: 40%" />
-  <h2 text center style="font-family: Open Sans; margin-left: 40%">Products List</h2>
-  <ion-button color="danger" size="small"(click)="logout()" routerLink="/login" style="margin-top: -5%;margin-left: 80%"><ion-icon slot="start" name="log-out"></ion-icon>Logout</ion-button>
+  <!-- <h2 text center style="font-family: Open Sans; margin-left: 40%">Products List</h2>
+  <ion-button color="danger" size="small"(click)="logout()" routerLink="/login" style="margin-top: -5%;margin-left: 80%"><ion-icon slot="start" name="log-out"></ion-icon>Logout</ion-button> -->
 </div>
- <p style="font-weight: bold; font-family: Open Sans; margin-left: 40%; margin-bottom: -3%"> Search by name</p> 
-    <ion-searchbar style="max-width:50%; margin-left: 50%; margin-top: -1%;" (ionChange)="FilterArrayObjects($event)" (ionClear)=" reloadImages()"></ion-searchbar>  
+ <!-- <p style="font-weight: bold; font-family: Open Sans; margin-left: 40%; margin-bottom: -3%"> Search by name</p>  -->
+    <!-- <ion-searchbar style="max-width:50%; margin-left: 50%; margin-top: -1%;" (ionChange)="FilterArrayObjects($event)" (ionClear)=" reloadImages()"></ion-searchbar>   -->
     <!-- <p style="font-family: Open Sans;font-weight: bold; margin-top: 5%">Actions</p>  -->
-    <ion-icon  style="font-size: 30px; margin-top: -8%; margin-left: 7%;"  (click)="presentActionSheet()" name="camera"></ion-icon>
-  <h3 [hidden]="images.length !== 0" text-center>No Items found!</h3>
-
+    <!-- <ion-icon  style="font-size: 30px; margin-top: -8%; margin-left: 7%;"  (click)="presentActionSheet()" name="camera"></ion-icon> -->
+  <!-- <h3 [hidden]="images.length !== 0" text-center>No Items found!</h3> -->
   
   <ion-list>
-    <ion-item-sliding  *ngFor="let img of images">
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+          <ion-card style="border-radius: 25px;background-color: orange">
+            <ion-card-header>
+              <ion-card-title style="font-weight: bold; font-family: Open Sans;">
+                Offline Sales 
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content style="font-weight: bolder; color: #fff">
+              {{salesCount}}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card style="border-radius: 25px;background-color: blueviolet">
+            <ion-card-header>
+              <ion-card-title style="font-weight: bold; font-family: Open Sans;">
+                Online Sales
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content style="font-weight: bolder;color: #fff">
+              12
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        </ion-row>
+      </ion-grid>
+      <h3 style="font-weight: bold; font-family: Open Sans;margin-left: 35%;">Recent Sales</h3>
+  <ion-slides [options]="sliderConfig">
+    <ion-slide *ngFor="let cat of product">
+      <div>
+    <ion-card style="border-radius: 25px;" (click)="openImager(cat)">
+      <ion-card-header>
+        <ion-card-title>
+         {{cat.customer }} <br> <span style="font-weight: bold; text-decoration: underline">Kes {{ cat.amount2 }}</span>
+          <!-- {{el}} -->
+        </ion-card-title>
+        <ion-card-content>
+          <ion-button fill="clear" color="success" (click)="openImager(cat)" style="color: #000;">View</ion-button>
+        </ion-card-content>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  </ion-slide>
+  </ion-slides>
+</div>
+    <!-- <ion-item lines="none">
+      <h2 text center style="font-family: Open Sans; margin-left: 25%">Products List</h2>
+    </ion-item> -->
+    <ion-item lines="none" style="margin-left: auto; margin-right: auto;">
+      <!-- <ion-icon  style="font-size: 30px; margin-left: 45%;"  (click)="presentActionSheet()" name="shirt" color="success"></ion-icon>
+      <p [hidden]="images.length !== 0" style= "color: red;">No Items found!</p> 
+      <h3 style="font-weight: bold; font-family: Open Sans;">Actions</h3> -->
+      <ion-button style="margin-left: auto; margin-right: auto;" expand="full" fill="clear" color="success" (click)="presentActionSheet()">Show Actions</ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <p style="font-weight: bold; font-family: Open Sans; ">Search</p> 
+      <ion-searchbar  [disabled]="images.length === 0" (ionChange)="FilterArrayObjects($event) && reloadImages()" (ionClear)=" reloadImages()"></ion-searchbar>  
+    </ion-item>
+    <ion-item lines="none">
  
+    </ion-item>
+  
+
+    <ion-item-sliding  *ngFor="let img of images">
       <ion-item tappable (click)="openImage(img)" lines="none">
         <ion-thumbnail item-start>
           <img [src]="img.url">

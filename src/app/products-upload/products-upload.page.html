@@ -5,13 +5,13 @@
 </ion-header>-->
 <ion-content > 
   <div class="bg-image">
-  <ion-grid style="background-color: blanchedalmond;" > 
+  <ion-grid style="background-color: lightgreen;" > 
     <ion-row>
     <ion-col size-sm="12" size-md="12" size-lg="12" style="background: #fff; color: grey;width: 80%;">
       <!-- <ion-col size-sm="2" tappable routerLink="/menu/home" style="color: #000;font-weight: bold;"></ion-col> -->
-      <ion-col size-sm="2" tappable routerLink="/tabs/tab1"style="color: #000;font-weight: bold;">Products List </ion-col>
-      <ion-col size-sm="2"tappable routerLink="/tabs/tab2" style="color: #000;font-weight: bold;">App Center </ion-col>
-      <ion-col size-sm="2" tappable routerLink="/tabs/tab3" style="color: #000; font-weight: bold;">Orders </ion-col> 
+      <ion-col size-sm="2" tappable routerLink="/tabs/tab1"style="color: #000;font-weight: bold; font-family:Open Sans">Home </ion-col>
+      <ion-col size-sm="2"tappable routerLink="/tabs/tab2" style="color: #000;font-weight: bold; font-family:Open Sans">App Center </ion-col>
+      <ion-col size-sm="2" tappable routerLink="/tabs/tab3" style="color: #000; font-weight: bold; font-family:Open Sans">Orders </ion-col> 
       <!-- <ion-col size-sm="2" tappable routerLink="/menu/contact" style="color: #000; font-weight: bold;">Contact Us </ion-col> -->
       <!-- <ion-col size-sm="4"><ion-icon name="call"></ion-icon>Call us 0719000112</ion-col> -->
     </ion-col>
@@ -20,40 +20,40 @@
     <div class="align-form">
       <!-- <h1 text-center style="font-family: Open Sans ;background-color: blanchedalmond;">Preeti Fashions<br></h1> -->
       <img src="/assets/PreetiLogo.png" style="height:100px; width: 100px;" />
-      <h2 text-center style="font-size: 13pt">Product Catalogue</h2>
-  <form [formGroup]="productsForm" (ngSubmit)="uploadnow()" enctype="multipart/form-data" style="background-color: blanchedalmond;">
-    <ion-list lines="none"> 
-    <ion-item >
-    <label position="floating">Description</label>
-    <input type="text" formControlName="description"/>
+      <h2 text-center style="font-size: 13pt; color: #fff; font-family: Open Sans;">Product Catalogue</h2>
+  <form [formGroup]="productsForm" (ngSubmit)="uploadnow()" enctype="multipart/form-data" style="background-color: lightgreen;">
+    <ion-list> 
+    <ion-item  style="background-color: blue;border-radius: 25px;" >
+    <ion-label position="floating">Description</ion-label>
+    <ion-input type="text" formControlName="description"></ion-input>
   </ion-item>
   <ion-item >
     <label position="floating">Category</label>  
     <select (change)="getCategory($event)"><option *ngFor= "let category of productCategory">{{category}}</option></select>
     <p>{{passedCategory}}</p>
   </ion-item >
-  <ion-item >
-    <label position="floating">Price</label>
-    <input type="number" formControlName="price"/>
+  <ion-item  style="background-color: blue;border-radius: 25px;">
+    <ion-label position="floating">Price</ion-label>
+    <ion-input type="number" formControlName="price"></ion-input>
   </ion-item >
-  <ion-item>
-    <label position="floating">Count</label>
-    <input type="number" formControlName="count"/>
+  <ion-item  style="background-color: blue;border-radius: 25px;">
+    <ion-label position="floating">Count</ion-label>
+    <ion-input type="number" formControlName="count"></ion-input>
   </ion-item>
-  <ion-item>
-    <label position="floating">Amount</label>
-    <input type="number" formControlName="amount"/>
+  <ion-item  style="background-color: blue;border-radius: 25px;">
+    <ion-label position="floating">Amount</ion-label>
+    <ion-input type="number" formControlName="amount"></ion-input>
   </ion-item>
-  <ion-item>
-    <label position="floating">Sizes</label>
-    <input type="text" formControlName="sizes"/>
+  <ion-item  style="background-color: blue;border-radius: 25px;">
+    <ion-label position="floating">Sizes</ion-label>
+    <ion-input type="text" formControlName="sizes"></ion-input>
+  </ion-item>
+  <ion-item lines="none" >
+    <ion-label position="floating"></ion-label>
+    <ion-input type="file" (change)="onFileSelected($event)" ></ion-input>
   </ion-item>
   <ion-item >
-    <label position="floating"></label>
-    <input type="file" (change)="onFileSelected($event)" />
-  </ion-item>
-  <ion-item >
-    <ion-button color="danger"  (click)="uploadnow()" type="button" style="color: #fff"size="default">Upload now</ion-button>
+    <ion-button color="primary"  (click)="uploadnow()" type="button" style="color: #fff"size="default">Upload now</ion-button>
   </ion-item>
 </ion-list>
   </form>

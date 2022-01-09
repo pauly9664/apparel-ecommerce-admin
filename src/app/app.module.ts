@@ -17,6 +17,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { FileTransfer,  FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { PreviewModalPageModule } from './preview-modal/preview-modal.module';
 import { OrderviewPageModule } from './orderview/orderview.module';
+import { ViewSalePageModule } from './view-sale/view-sale.module';
 // import { UploadModalPageModule } from './upload-modal/upload-modal.module';
 export function jwtOptionsFactory(storage) {
   return {
@@ -35,6 +36,7 @@ export function jwtOptionsFactory(storage) {
     OrderviewPageModule,
     // UploadModalPageModule,
     PreviewModalPageModule,
+    ViewSalePageModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
     IonicStorageModule.forRoot(),
