@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   // url: 'http://192.168.100.35:501',
   // url: 'http://192.168.0.121:8080'
-  url: 'http://192.168.0.13:8080'
+  url: 'http://192.168.0.12:8080'
 };
 
 /*

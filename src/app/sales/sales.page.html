@@ -1,9 +1,10 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title text-center>Sales</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 <ion-content>
   <!-- <ion-grid>
     <ion-row>
@@ -37,21 +38,29 @@
     </ion-item>
     <ion-item style="background-color:blue; border-radius: 25px">
       <ion-label position="floating">DbCount</ion-label>
-      <ion-input type="number" formControlName="count"></ion-input>
+      <ion-input [disabled]="true" type="number" formControlName="count"></ion-input>
     </ion-item>
     <ion-item  lines="none">
-      <ion-button color="primary" (click)="presentLoadingWithOptions()" (click)="uploadnow()"   type="button" style="color: #fff; border-radius: 25px" (click)="updateStock()"size="default">Add Item</ion-button>
+      <ion-button fill="clear" color="primary" type="button" style="color: #fff; border-radius: 25px;margin-right: auto; margin-left:auto" (click)="getDbCount()" (click)="showAlert2()"size="default">Add Item</ion-button>
     </ion-item>
   
   </div>
   <!-- </ion-col> -->
 <!-- </ion-row>
 </ion-grid> --> 
-<h3 style="font-weight: bold;color: purple;">Customer Details</h3>
+<h3 style="font-weight: bold;color: purple;">Sale Details</h3>
   <div class="omega">
    
     <form [formGroup]="productsForm" (ngSubmit)="uploadnow()" enctype="multipart/form-data" style="background-color: lightgreen;">
     <ion-list> 
+        <ion-item  lines="none" style="background-color:blue;">
+            <label  position="floating">Payment</label>  
+            <select style=" max-width: 50%; border-radius: 25px" (change)="getPayment($event)"><option *ngFor= "let payment of payment">{{payment}}</option></select>
+        </ion-item>
+        <ion-item  lines="none" style="background-color:blue;">
+            <label  position="floating">Type</label>  
+            <select style=" max-width: 50%; border-radius: 25px" (change)="getSaleType($event)"><option *ngFor= "let sale of sale_type">{{sale}}</option></select>
+       </ion-item>
     <ion-item style="background-color:blue; border-radius: 25px">
     <ion-label  position="floating">Name</ion-label>
     <ion-input style="max-width: 50%" type="text" formControlName="customer"></ion-input>
@@ -64,7 +73,17 @@
     <ion-label position="floating">Email</ion-label>
     <ion-input type="email" formControlName="email"></ion-input>
   </ion-item>
-    <p *ngFor="let sale of itemArray"><b>{{sale.item_name}} Kes</b> {{sale.price}} {{sale.units}}</p>
+ <div *ngIf="checkBooking;">
+ <ion-item style="background-color:blue; border-radius: 25px">
+    <ion-label position="floating">Amount Paid</ion-label>
+    <ion-input type="number" formControlName="amount_paid"></ion-input>
+ </ion-item>
+ <ion-item lines="none">
+    <ion-label position="floating">Balance</ion-label>
+   <ion-input [disabled]="true" type="text" formControlName="balance"></ion-input>
+ </ion-item>
+</div>
+    <p *ngFor="let sale of itemArray"><b>{{sale.item_name}} Kes</b> {{sale.price}} x {{sale.units}}</p>
   <ion-item lines="none">
     <ion-label position="floating">Grand Total</ion-label>
     <ion-input disabled="true" type="number" formControlName="amount2"></ion-input>
@@ -75,8 +94,8 @@
     <input type="file" (change)="onFileSelected($event)" />
   </ion-item> -->
   <ion-item lines="none">
-    <ion-button color="primary" [disabled]="!productsForm.valid" (click)="showAlert()" type="button" style="color: #fff"size="default">Add Sale</ion-button>
-    <ion-button color="danger" type="button" routerLink= "/tabs/tab2" style="color: #fff"size="default">Back</ion-button>
+    <ion-button color="primary" fill="clear" (click)="getBalance()" [disabled]="!productsForm.valid" (click)="showAlert()" type="button" style="color: #fff;margin-right: auto; margin-left:auto"size="default">Add Sale</ion-button>
+    <ion-button fill="clear"color="danger" type="button" routerLink= "/tabs/tab2" style="color: #fff;margin-right: auto; margin-left:auto"size="default">Back</ion-button>
   </ion-item>
 </ion-list>
   </form>

@@ -23,7 +23,7 @@
         <p style="max-width: 4.2em;"> {{account.buying_date | date }}</p>
     </ion-col>
      <ion-col>
-        <p style="font-family: Open Sans;"><span style="color: #000; font-weight: bold"><i> KES {{account.amount}}</i></span></p>
+        <p style="font-family: Open Sans;max-width: 4.2em;"><span style="color: #000; font-weight: bold"><i>{{account.amount}}</i></span></p>
      </ion-col>
      <ion-col>
         <ion-button color="success"  expand="full" fill="clear" (click)="confirmviewed(account._id)"[routerLink]="['/orderview', account._id]">VIEW</ion-button>

@@ -4,6 +4,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { element } from 'protractor';
 // import { privateDecrypt } from 'crypto';
 import { ProductsService } from '../products.service';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-sales',
@@ -23,11 +24,30 @@ export class SalesPage implements OnInit {
   testForm2 = []
   testForm3 = []
   itemString = ''
-  passedItem :any
-  selectedItem:any
-  filteredObj:any
+  passedItem :any;
+  passedPayment:any;
+  passedSale:any;
+  selectedItem:any;
+  filteredObj:any;
   setval: any;
   prod:any;
+  balance:any;
+  DbCount:any;
+  payment: any = [
+    '...',
+    'Cash',
+    'Paybill',
+    'Visa',
+    'Cheque'
+  ];
+  sale_type:any = [
+    '...',
+    'Normal',
+    'Booking',
+    'Take Away'
+  ];
+  checkBooking:boolean;
+
   constructor(public formBuilder: FormBuilder,private alertController: AlertController, public items: ProductsService, public loadingController: LoadingController) { }
 
   ngOnInit() {
@@ -51,20 +71,44 @@ export class SalesPage implements OnInit {
       number: ['', [Validators.required, Validators.maxLength(10)],],
       count: ['', ],
       amount: ['',],
-      amount2:['',],
+      amount2:['', [Validators.required, Validators.maxLength(10)]],
       sizes: ['',],
       item_name: ['',],
-      item_list: [this.itemString]
+      item_list: [this.itemString],
+      payment_mode: ['',],
+      sale_type: ['',],
+      amount_paid:['',],
+      balance:['',],
+      clearance_status:['',],
     });
     this.setval = this.productsForm.get('category').setValue(this.passedItem);
   }
   getProduct(){
-    var count = this.productsForm.get('units').value
-    var price = this.productsForm.get('price').value
-    this.prod = count * price
+    var count = this.productsForm.get('units').value;
+    var price = this.productsForm.get('price').value;
+    this.prod = count * price;
     this.productsForm.get('amount').setValue(this.prod)
     console.log("totale", this.prod)
   }
+  getBalance(){
+    var paid = this.productsForm.get('amount_paid').value;
+    console.log("Paid", paid)
+    if(paid === ''){
+      let phl = '0';
+     this.productsForm.get('balance').setValue(phl)
+  }else{
+    this.balance = this.sum - paid;
+    this.productsForm.get('balance').setValue(this.balance);
+  }
+}
+getDbCount(){
+  var units = this.productsForm.get('units').value;
+  var count = this.productsForm.get('count').value;
+  this.DbCount = count - units;
+  this.productsForm.get('count').setValue(this.DbCount)
+
+  console.log("New Count", this.DbCount);
+}
   getItem(ev:any){
     this.passedItem = ev.target.value;
    
@@ -83,12 +127,29 @@ export class SalesPage implements OnInit {
     });
     this.passedItem = this.selectedItem
   }
+  getPayment(ev:any){
+    this.passedPayment = ev.target.value;
+    this.productsForm.get('payment_mode').setValue(this.passedPayment)
+  }
+  getSaleType(ev:any){
+    this.passedSale = ev.target.value;
+    this.productsForm.get('sale_type').setValue(this.passedSale);
+    if(this.passedSale == 'Booking'){
+     this.checkBooking = true;
+     let clearance = 0
+     this.productsForm.get('clearance_status').setValue(clearance);
+    }else{
+      this.checkBooking = false;
+      let cleared = 1
+      this.productsForm.get('clearance_status').setValue(cleared)
+    }
+  }
   filterAgain(){
     this.items.fetchItems().subscribe(data => {
       this.product = data;
       console.log('Cats:', this.product)
       this.product.forEach((item)=>{
-        console.log("Categories", item);
+        // console.log("Categories", item);
         // if(item.category.indexOf(value) ==)
           this.productCategory.push(item.name);
         
@@ -164,7 +225,7 @@ this.sum = this.sumArray.reduce((a, b)=>a+b, 0)
  async showAlert(msg) {
     let alert =await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Confirm!',
+      header: 'Confirm sale of KES ' +this.sum+ ' with a balance of KES ' +this.balance+ ' ?',
       message: msg,
       buttons: [
         {
@@ -180,6 +241,32 @@ this.sum = this.sumArray.reduce((a, b)=>a+b, 0)
           text: 'Ok',
           handler:()=>{
             this.uploadFinal();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+  async showAlert2(msg) {
+    let alert =await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm change in stock count to ' +this.productsForm.get('count').value+ '?',
+      message: msg,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler:()=>{
+
+          }
+
+        },
+        {
+          text: 'Ok',
+          handler:()=>{
+            this.updateStock();
+            this.uploadnow();
           }
         }
       ]

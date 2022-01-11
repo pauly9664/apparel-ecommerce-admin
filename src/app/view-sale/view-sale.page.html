@@ -2,7 +2,7 @@
 
 <ion-content>
   <ion-card >
-    <ion-card-header text-center style="font-size: 200%">Sale Details</ion-card-header>
+    <ion-card-header color="primary" text-center style="font-size: 200%">Sale Details</ion-card-header>
 
     <!-- <ion-card-content *ngFor="let jica of pat.products"> {{jica.id}}  ></ion-card-content> -->
  
@@ -10,7 +10,7 @@
     <p><span style="font-weight: bold;">Name</span>: {{img.customer}}</p><br>
     <p><span style="font-weight: bold;">Item List</span>: {{img.item_list}}</p><br>
     <p><span style="font-weight: bold;"> Grand Total</span>: <i>KES {{img.amount2}}</i></p> 
-    <ion-button (click)="closeModal()" fill="clear">BACK</ion-button>
+    <ion-button style="margin-right:auto; margin-left:auto" (click)="closeModal()" fill="clear">BACK</ion-button>
     <!-- <ion-button (click)="addProduct(product)" color="dark" ><ion-icon name="add"></ion-icon> Book Item </ion-button> -->
   </div>
 </ion-card>
